@@ -10,9 +10,13 @@ def nginx_logs_stats():
     collection = db['nginx']
 
     logs = collection.count_documents({})
-    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"] 
+    print(f"{logs} logs")
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    print("Methods:")
     for method in methods:
         count = collection.count_documents({"method": method})
+        print(f"\t method {method}: {count}")
     count_status = collection.count_documents({"method": "GET", "path": "/status"})
+    print(f"{count_status} status check")
     client.close()
-    nginx_logs_stats()
+nginx_logs_stats()
