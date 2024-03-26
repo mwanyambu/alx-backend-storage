@@ -22,4 +22,5 @@ def nginx_logs_stats():
     client.close()
 
 
-nginx_logs_stats()
+if __name__ == "__main__":
+    nginx_logs_stats()
